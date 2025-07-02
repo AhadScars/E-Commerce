@@ -26,4 +26,8 @@ public class UserController {
     public UserEntity saveUser(@RequestBody UserEntity user){
         return userService.addUser(user);
     }
+    @PostMapping("/login")
+    public String login(@RequestBody UserEntity user){
+        return userService.verify(user);
+    }
 }
