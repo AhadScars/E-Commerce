@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 
 import com.example.demo.Entity.UserEntity;
+import com.example.demo.Entity.UserRole;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,6 +31,8 @@ public class UserService {
 
     public UserEntity addUser(UserEntity entity){
     entity.setPassword(passwordEncoder.encode(entity.getPassword()));
+    if (entity.getRole()==null)
+        entity.setRole(UserRole.USER);
         return repository.save(entity);
     }
 

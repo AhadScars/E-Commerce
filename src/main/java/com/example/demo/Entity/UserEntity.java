@@ -1,9 +1,6 @@
 package com.example.demo.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -14,12 +11,24 @@ public class UserEntity {
     private Integer id;
     private String username;
 
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    @Enumerated (EnumType.STRING)
+    private UserRole role;
+
     private String password;
 
-    public UserEntity(Integer id, String username, String password) {
+    public UserEntity(Integer id, String username, String password,UserRole role) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     public Integer getId() {
@@ -48,4 +57,5 @@ public class UserEntity {
 
     public UserEntity() {
     }
+
 }
