@@ -32,8 +32,7 @@ public class Config {
                 http
                         .csrf(AbstractHttpConfigurer::disable)
                         .authorizeHttpRequests(auth-> auth
-                                .requestMatchers("/amazon/saveuser", "/amazon/login").permitAll()
-                                .requestMatchers("/product/showall").permitAll()
+                                .requestMatchers("/amazon/register", "/amazon/login", "/product/showall","category/all","/cart/**","/product/**").permitAll()
                                 .requestMatchers("/product/add","/category/add").hasRole("ADMIN")
                                 .requestMatchers("/user/**").hasRole("USER")
                                 .anyRequest().authenticated()

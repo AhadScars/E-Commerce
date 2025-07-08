@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,6 +23,7 @@ public class UserEntity {
     @Enumerated (EnumType.STRING)
     private UserRole role;
 
+    @JsonProperty (access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     public UserEntity(Integer id, String username, String password,UserRole role) {

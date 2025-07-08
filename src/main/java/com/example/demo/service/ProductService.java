@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -26,6 +27,10 @@ public class ProductService {
 
     public List<ProductEntity> findByName(String name){
         return repository.findByNameContainingIgnoreCase(name);
+    }
+
+    public Optional<ProductEntity> findById(Integer Id){
+        return repository.findById(Id);
     }
 
     public List<ProductEntity> findByPrice(Integer price){

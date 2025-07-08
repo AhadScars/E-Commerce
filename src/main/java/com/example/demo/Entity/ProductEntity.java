@@ -11,7 +11,7 @@ public class ProductEntity {
     private String description;
 
     public ProductEntity(Integer id, String name, String description, Integer price) {
-        Id = id;
+        this.Id = id;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -28,7 +28,7 @@ public class ProductEntity {
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.Id = id;
     }
 
     public String getName() {

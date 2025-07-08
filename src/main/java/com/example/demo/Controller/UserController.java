@@ -22,7 +22,7 @@ public class UserController {
         return userService.getAll();
     }
 
-    @PostMapping("/saveuser")
+    @PostMapping("/register")
     public UserEntity saveUser(@RequestBody UserEntity user){
         return userService.addUser(user);
     }
