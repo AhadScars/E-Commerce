@@ -4,6 +4,9 @@ package com.example.demo.Controller;
 import com.example.demo.Entity.UserEntity;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,13 +21,19 @@ public class UserController {
 
 
     @GetMapping("/getall")
-    public List<UserEntity> getAll(){
-        return userService.getAll();
+    public ResponseEntity<?> getAll(){
+        List<UserEntity> user = userService.getAll();
+        if (user.isEmpty()){
+            return new ResponseEntity<>("Data is Empty", HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/register")
-    public UserEntity saveUser(@RequestBody UserEntity user){
-        return userService.addUser(user);
+    public ResponseEntity<String> saveUser(@RequestBody UserEntity user){
+        UserEntity User = userService.addUser(user);
+        return new ResponseEntity<>("User save Succesfully in database", HttpStatus.CREATED );
+
     }
     @PostMapping("/login")
     public String login(@RequestBody UserEntity user){

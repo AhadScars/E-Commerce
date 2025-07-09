@@ -25,8 +25,4 @@ public class CategoryService {
     public List<CategoryEntity> searchByName(String name){
         return repository.findByCategoryNameContainingIgnoreCase(name);
     }
-
-    public CategoryEntity findByName(String categoryName){
-        return repository.findByCategoryName(categoryName);
-    }
 }
